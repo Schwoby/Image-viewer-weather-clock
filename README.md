@@ -50,7 +50,7 @@ When running the weather portion of the code, the internet calls can:
 
 ## Future Update(s)
 ### V5
-- Full rewrite of weather clock
+- Full rewrite of weather clock (keeping PyGame)
 - [ ] Better use of functions - cleaner code
 - [ ] Better implementation of try/except - solve known issues
 - [ ] Various bug fixes - solve unknown/new issues

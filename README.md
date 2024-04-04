@@ -2,6 +2,13 @@
 Initially created for my children to know what clothing was acceptable for the day. Written in Python3 using PyGame for the display. Written for use in Linux; some variances, which i will attempt to notate, will need to be made for Windows. Any and all Mac versions of OS have been untested.
 
 ## Version History
+### V5
+- Full rewrite of weather clock (keeping PyGame)
+- [ ] Better use of functions - cleaner code
+- [ ] Better implementation of try/except - solve known issues
+- [ ] Various bug fixes - solve unknown/new issues
+- Minor rewrite of image viewer
+- [ ] scale clock with screen resolution - better cross-device consistency
 ### V4
 - **Initial upload of code**
 - Rewrote image viewer code (now PyGame)
@@ -39,20 +46,14 @@ The image info is obtained by parsing the image name. The naming format is "[Art
 The image set display order will be created fresh each round by scanning the image folder for all images and then randomizing this list. If the image viewer is inturupted to display the Weather, it will resume where it left off in the image set. At the end of the image set, it will rescan the image folder and reindex the images it finds. The image will fit to the screen while retaining it's hight/width ratio.
 
 ## Known Issues
-### Internet Calls
-When running the weather portion of the code, the internet calls can:
-1. hang the program (admitidly not the best word usage) - uncommon
-  - program appears to be unresponsive
-  - program resumes with image viewer when weather timing ends
-2. soft crash the program - common
-  - program appears to be unresponsive
-  - program does not resume at any time
+### ~~Internet Calls~~
+~~When running the weather portion of the code, the internet calls can:~~
+1. ~~hang the program (admitidly not the best word usage) - uncommon~~
+  - ~~program appears to be unresponsive~~
+  - ~~program resumes with image viewer when weather timing ends~~
+2. ~~soft crash the program - common~~
+  - ~~program appears to be unresponsive~~
+  - ~~program does not resume at any time~~
 
 ## Future Update(s)
-### V5
-- Full rewrite of weather clock (keeping PyGame)
-- [ ] Better use of functions - cleaner code
-- [ ] Better implementation of try/except - solve known issues
-- [ ] Various bug fixes - solve unknown/new issues
-- Minor rewrite of image viewer
-- [ ] scale clock with screen resolution - better cross-device consistency
+Completing V5

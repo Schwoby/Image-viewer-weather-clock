@@ -5,7 +5,7 @@ Initially created for my children to know what clothing was acceptable for the d
 ### V5
 - Full rewrite of weather clock (keeping PyGame)
 - [ ] Better use of functions - cleaner code
-- [ ] Better implementation of try/except - solve known issues
+- [x] Better implementation of try/except - solve known issues
 - [ ] Various bug fixes - solve unknown/new issues
 - Minor rewrite of image viewer
 - [ ] scale clock with screen resolution - better cross-device consistency

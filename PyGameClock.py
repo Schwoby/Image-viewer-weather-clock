@@ -118,6 +118,11 @@ def MakeClock(h,m,s):
 	theta = s*(360/60)
 	pygame.draw.aaline(screen,(255,0,0), (ClockSizeW,ClockSizeH), ConvertDegreesToPyGame(R, theta), 1)
 
+def WeatherMapInt():
+	global image10
+	image10 = pygame.transform.scale(pygame.image.load(f"transparent.png"), (int(screen_w*.5),int(392/600*(screen_w*.5))))
+	WeatherMap()
+
 def WeatherMap():
 	global image0, image1, image2, image3, image4, image5, image6, image7, image8, image9
 	try:
@@ -125,80 +130,70 @@ def WeatherMap():
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_0.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image9 = pygame.image.load(image_file)
+		image9 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
-		image9 = pygame.image.load(f"transparent.png")
-	image9 = pygame.transform.scale(image9, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image9 = image10
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_1.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image8 = pygame.image.load(image_file)
-		image8 = pygame.transform.scale(image8, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image8 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image8 = image9
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_2.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image7 = pygame.image.load(image_file)
-		image7 = pygame.transform.scale(image7, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image7 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image7 = image8
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_3.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image6 = pygame.image.load(image_file)
-		image6 = pygame.transform.scale(image6, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image6 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image6 = image7
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_4.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image5 = pygame.image.load(image_file)
-		image5 = pygame.transform.scale(image5, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image5 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image5 = image6
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_5.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image4 = pygame.image.load(image_file)
-		image4 = pygame.transform.scale(image4, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image4 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image4 = image5
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_6.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image3 = pygame.image.load(image_file)
-		image3 = pygame.transform.scale(image3, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image3 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image3 = image4
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_7.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image2 = pygame.image.load(image_file)
-		image2 = pygame.transform.scale(image2, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image2 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image2 = image3
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_8.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image1 = pygame.image.load(image_file)
-		image1 = pygame.transform.scale(image1, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image1 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image1 = image2
 	try:
 		image_url = f"https://radar.weather.gov/ridge/standard/CONUS_9.gif"
 		image_str = urlopen(image_url, timeout=2).read()
 		image_file = io.BytesIO(image_str)
-		image0 = pygame.image.load(image_file)
-		image0 = pygame.transform.scale(image0, (int(screen_w*.5),int(392/600*(screen_w*.5))))
+		image0 = pygame.transform.scale(pygame.image.load(image_file), (int(screen_w*.5),int(392/600*(screen_w*.5))))
 	except:
 		image0 = image1
 
@@ -312,7 +307,7 @@ else:
 CreateList()
 while True:
 	WeekendCheck()
-	WeatherMap()
+	WeatherMapInt()
 	while ((strftime("%R") >= settings.TimeRangeSrt1) & (strftime("%R") < settings.TimeRangeEnd1)) | ((strftime("%R") >= settings.TimeRangeSrt2) & (strftime("%R") < settings.TimeRangeEnd2) & (IsWeekendState != settings.IsWeekendTest)):
 		if unix < int(time.time()):
 			unix = int(time.time())

@@ -3,20 +3,20 @@ Initially created for my children to know what clothing was acceptable for the d
 
 ## Version History
 ### V5
-- Full rewrite of weather clock (keeping PyGame)
-- [ ] Better use of functions - cleaner code
-- [x] Better implementation of try/except - solve known issues
+- Added error handeling to provid graceful fail conditions
+  - Weather web pulls
+  - Removing images from image folder
+  - Skipping non-image files
 - [ ] Various bug fixes - solve unknown/new issues
-- Minor rewrite of image viewer
-- [ ] scale clock with screen resolution - better cross-device consistency
+- [ ] scale clock with screen resolution (for better cross-device consistency)
 ### V4
 - **Initial upload of code**
-- Rewrote image viewer code (now PyGame)
+- Rewrote image viewer code (now in PyGame)
 - Updated how the image set diplay order is generated and accessed
 - Added image info display in the top left
 - Fixed some timing bugs for switching between the image viewer and the weather clock
 ### V3
-- Added the image viewer (originally Turtle)
+- Added the image viewer (originally in Turtle)
 - Fixed bugs from mismatched display viewers (PyGame vs Turtle)
 - Added time breaks to switch between the image viewer and the weather clock
 ### V2

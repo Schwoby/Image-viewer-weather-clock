@@ -47,7 +47,8 @@ def _check_events():
 				sys.exit()
 
 def CreateList():
-	global BackgroundList, ListStart, ListEnd
+	global BackgroundList, ListStart, ListEnd, ListCount
+	ListCount=0
 	ListStart,ListEnd = 1,len([entry for entry in os.listdir(settings.dir_path) if os.path.isfile(os.path.join(settings.dir_path, entry))])
 	BackgroundList = []
 	for file_path in os.listdir(settings.dir_path):
@@ -56,21 +57,24 @@ def CreateList():
 	random.shuffle(BackgroundList)
 
 def CreateBackground():
-	screen.fill(settings.clock_bg_color)
-	bg_image = pygame.image.load(f"{settings.dir_path}/{BackgroundList[ListCount]}")
-	bg_orig_w, bg_orig_h = bg_image.get_size()
-	if (bg_orig_w/screen_w >= bg_orig_h/screen_h):
-		scaled_bg_image = pygame.transform.scale(bg_image, (int(bg_orig_w//(bg_orig_w/screen_w)), int(bg_orig_h//(bg_orig_w/screen_w))))
-	else:
-		scaled_bg_image = pygame.transform.scale(bg_image, (int(bg_orig_w//(bg_orig_h/screen_h)), int(bg_orig_h//(bg_orig_h/screen_h))))
-	bg_rect = scaled_bg_image.get_rect()
-	bg_rect.center = (screen_w/2, screen_h/2)
-	screen.blit(scaled_bg_image, bg_rect)
-	bg_text = BackgroundList[ListCount][:len(BackgroundList[ListCount])-4].split(' - ')
-	screen.blit(font_size_4.render(f'{bg_text[0]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*2))
-	screen.blit(font_size_4.render(f'{bg_text[1]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*1))
-	screen.blit(font_size_4.render(f'{bg_text[2]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*0))
-	pygame.display.update()
+	try:
+		screen.fill(settings.clock_bg_color)
+		bg_image = pygame.image.load(f"{settings.dir_path}/{BackgroundList[ListCount]}")
+		bg_orig_w, bg_orig_h = bg_image.get_size()
+		if (bg_orig_w/screen_w >= bg_orig_h/screen_h):
+			scaled_bg_image = pygame.transform.scale(bg_image, (int(bg_orig_w//(bg_orig_w/screen_w)), int(bg_orig_h//(bg_orig_w/screen_w))))
+		else:
+			scaled_bg_image = pygame.transform.scale(bg_image, (int(bg_orig_w//(bg_orig_h/screen_h)), int(bg_orig_h//(bg_orig_h/screen_h))))
+		bg_rect = scaled_bg_image.get_rect()
+		bg_rect.center = (screen_w/2, screen_h/2)
+		screen.blit(scaled_bg_image, bg_rect)
+		bg_text = BackgroundList[ListCount][:len(BackgroundList[ListCount])-4].split(' - ')
+		screen.blit(font_size_4.render(f'{bg_text[0]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*2))
+		screen.blit(font_size_4.render(f'{bg_text[1]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*1))
+		screen.blit(font_size_4.render(f'{bg_text[2]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*0))
+		pygame.display.update()
+	except FileNotFoundError:
+		CreateList()
 
 def UpdateBackground():
 	global ListCount, BackgroundList

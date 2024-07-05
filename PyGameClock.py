@@ -22,8 +22,6 @@ settings = Settings()
 account = WeatherAccount()
 WeatherList = [0,0,0,0,'N/A']
 CurrentSecond=0
-ListCount=0
-ListStart,ListEnd = 1,len([entry for entry in os.listdir(settings.dir_path) if os.path.isfile(os.path.join(settings.dir_path, entry))])
 
 pygame.init()
 if settings.screen_type == 'FULLSCREEN':
@@ -47,19 +45,21 @@ def _check_events():
 				sys.exit()
 
 def CreateList():
-	global BackgroundList, ListStart, ListEnd, ListCount
-	ListCount=0
-	ListStart,ListEnd = 1,len([entry for entry in os.listdir(settings.dir_path) if os.path.isfile(os.path.join(settings.dir_path, entry))])
+	global BackgroundList, ListCount, ListPlace
+	ListPlace=0
+	ListCount = 0
 	BackgroundList = []
-	for file_path in os.listdir(settings.dir_path):
-		if os.path.isfile(os.path.join(settings.dir_path, file_path)):
-			BackgroundList.append(file_path)
+	for file_name in os.listdir(settings.dir_path):
+		file_path = os.path.join(settings.dir_path, file_name)
+		if os.path.isfile(file_path) and (file_name.lower().endswith('.jpg') or file_name.lower().endswith('.jpeg') or file_name.lower().endswith('.png')):
+			BackgroundList.append(file_name)
+			ListCount += 1
 	random.shuffle(BackgroundList)
 
 def CreateBackground():
 	try:
 		screen.fill(settings.clock_bg_color)
-		bg_image = pygame.image.load(f"{settings.dir_path}/{BackgroundList[ListCount]}")
+		bg_image = pygame.image.load(f"{settings.dir_path}/{BackgroundList[ListPlace]}")
 		bg_orig_w, bg_orig_h = bg_image.get_size()
 		if (bg_orig_w/screen_w >= bg_orig_h/screen_h):
 			scaled_bg_image = pygame.transform.scale(bg_image, (int(bg_orig_w//(bg_orig_w/screen_w)), int(bg_orig_h//(bg_orig_w/screen_w))))
@@ -68,7 +68,7 @@ def CreateBackground():
 		bg_rect = scaled_bg_image.get_rect()
 		bg_rect.center = (screen_w/2, screen_h/2)
 		screen.blit(scaled_bg_image, bg_rect)
-		bg_text = BackgroundList[ListCount][:len(BackgroundList[ListCount])-4].split(' - ')
+		bg_text = BackgroundList[ListPlace][:len(BackgroundList[ListPlace])-4].split(' - ')
 		screen.blit(font_size_4.render(f'{bg_text[0]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*2))
 		screen.blit(font_size_4.render(f'{bg_text[1]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*1))
 		screen.blit(font_size_4.render(f'{bg_text[2]}',True, settings.clock_face_color, settings.clock_bg_color), (20,20+font_size4*0))
@@ -77,15 +77,15 @@ def CreateBackground():
 		CreateList()
 
 def UpdateBackground():
-	global ListCount, BackgroundList
+	global ListPlace, BackgroundList
 	if (int(time.strftime("%M")) in (1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59)) & (int(time.strftime("%S")) == 0):
 	#if (int(time.strftime("%S")) in (0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58)):
 		CreateBackground()
-		if (ListCount != (ListEnd-1)):
-			ListCount += 1
+		if (ListPlace != (ListCount-1)):
+			ListPlace += 1
 		else:
 			CreateList()
-			ListCount=0
+			ListPlace=0
 
 def ConvertDegreesToPyGame(R,theta):
 	y = math.cos(2*math.pi*theta/360)*R

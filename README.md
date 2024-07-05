@@ -44,16 +44,3 @@ This clock is programed to move each of the three (3) hands the appropre space o
 The image info is obtained by parsing the image name. The naming format is "[Artist Name] - [Year(s)] - [Image Name].[image extention]". The info is parsed with the space-hyphen-space between each name set; this alows for hyphens to be used within the names and years, so long as its directly between alphanumeric characters on each side.
 #### Image
 The image set display order will be created fresh each round by scanning the image folder for all images and then randomizing this list. If the image viewer is inturupted to display the Weather, it will resume where it left off in the image set. At the end of the image set, it will rescan the image folder and reindex the images it finds. The image will fit to the screen while retaining it's hight/width ratio.
-
-## Known Issues
-### ~~Internet Calls~~
-~~When running the weather portion of the code, the internet calls can:~~
-1. ~~hang the program (admitidly not the best word usage) - uncommon~~
-  - ~~program appears to be unresponsive~~
-  - ~~program resumes with image viewer when weather timing ends~~
-2. ~~soft crash the program - common~~
-  - ~~program appears to be unresponsive~~
-  - ~~program does not resume at any time~~
-
-## Future Update(s)
-Completing V5

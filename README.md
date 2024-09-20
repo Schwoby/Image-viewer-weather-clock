@@ -8,6 +8,7 @@ Initially created for my children to know what clothing was acceptable for the d
   - Removing images from image folder
   - Skipping non-image files
 - [ ] Various bug fixes - solve unknown/new issues
+  - OpenWeather API changed, updated code to match. Weather forcast information is now only accessable via their "Base plan", which a credit card is required for, but the first 1000 calls per day are free.
 - [ ] scale clock with screen resolution (for better cross-device consistency)
 ### V4
 - **Initial upload of code**
